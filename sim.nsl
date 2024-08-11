@@ -1,0 +1,22 @@
+%i "cam_test.inc"
+%i "sim.inc"
+%i "sim_VGA.inc"
+module sim{
+    cam_test cam_test_x;
+    sim_VGA sim_VGA_x;
+    func_self sim_start();
+    reg count[32]=32'b0;
+    if(count==32'd1400000){
+        _finish();
+    }else{
+        if(count>10){
+        
+        cam_test_x.in_data={sim_VGA_x.VGA_R,sim_VGA_x.VGA_G};
+        cam_test_x.c_vsync=~sim_VGA_x.VGA_VS;
+        cam_test_x.pclk=~sim_VGA_x.pclk;
+	    cam_test_x.href=~sim_VGA_x.VGA_HS;
+    }
+        count++;
+    }
+
+}
