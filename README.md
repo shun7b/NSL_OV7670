@@ -9,3 +9,4 @@ top module cam_test.v
 <br>１２８＊１２８の配列に画像データを書き込みVGAで表示した。
 <br>GPIOでカメラとFPGAを通信した。
 <br>GPIOのピンはcam_test.qsfを参照
+<br>VGA.v,cam_test.v,camera.v,vram.vのみで論理合成するとできた。
