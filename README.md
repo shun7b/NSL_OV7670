@@ -8,4 +8,4 @@ top module cam_test.v
 <br>ただし、cam_test.vは変更した。
 <br>１２８＊１２８の配列に画像データを書き込みVGAで表示した。
 <br>GPIOでカメラとFPGAを通信した。
-<br>GPIOのピンはcama_test.qsfを参照
+<br>GPIOのピンはcam_test.qsfを参照
