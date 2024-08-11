@@ -1,0 +1,905 @@
+Timing Analyzer report for cam_test
+Mon Aug 12 00:28:54 2024
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow 1100mV 85C Model Fmax Summary
+  6. Timing Closure Recommendations
+  7. Slow 1100mV 85C Model Setup Summary
+  8. Slow 1100mV 85C Model Hold Summary
+  9. Slow 1100mV 85C Model Recovery Summary
+ 10. Slow 1100mV 85C Model Removal Summary
+ 11. Slow 1100mV 85C Model Minimum Pulse Width Summary
+ 12. Slow 1100mV 85C Model Metastability Summary
+ 13. Slow 1100mV 0C Model Fmax Summary
+ 14. Slow 1100mV 0C Model Setup Summary
+ 15. Slow 1100mV 0C Model Hold Summary
+ 16. Slow 1100mV 0C Model Recovery Summary
+ 17. Slow 1100mV 0C Model Removal Summary
+ 18. Slow 1100mV 0C Model Minimum Pulse Width Summary
+ 19. Slow 1100mV 0C Model Metastability Summary
+ 20. Fast 1100mV 85C Model Setup Summary
+ 21. Fast 1100mV 85C Model Hold Summary
+ 22. Fast 1100mV 85C Model Recovery Summary
+ 23. Fast 1100mV 85C Model Removal Summary
+ 24. Fast 1100mV 85C Model Minimum Pulse Width Summary
+ 25. Fast 1100mV 85C Model Metastability Summary
+ 26. Fast 1100mV 0C Model Setup Summary
+ 27. Fast 1100mV 0C Model Hold Summary
+ 28. Fast 1100mV 0C Model Recovery Summary
+ 29. Fast 1100mV 0C Model Removal Summary
+ 30. Fast 1100mV 0C Model Minimum Pulse Width Summary
+ 31. Fast 1100mV 0C Model Metastability Summary
+ 32. Multicorner Timing Analysis Summary
+ 33. Board Trace Model Assignments
+ 34. Input Transition Times
+ 35. Signal Integrity Metrics (Slow 1100mv 0c Model)
+ 36. Signal Integrity Metrics (Slow 1100mv 85c Model)
+ 37. Signal Integrity Metrics (Fast 1100mv 0c Model)
+ 38. Signal Integrity Metrics (Fast 1100mv 85c Model)
+ 39. Setup Transfers
+ 40. Hold Transfers
+ 41. Recovery Transfers
+ 42. Removal Transfers
+ 43. Report TCCS
+ 44. Report RSKM
+ 45. Unconstrained Paths Summary
+ 46. Clock Status Summary
+ 47. Unconstrained Input Ports
+ 48. Unconstrained Output Ports
+ 49. Unconstrained Input Ports
+ 50. Unconstrained Output Ports
+ 51. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++--------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                        ;
++-----------------------+--------------------------------------------------------+
+; Quartus Prime Version ; Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                                 ;
+; Revision Name         ; cam_test                                               ;
+; Device Family         ; Cyclone V                                              ;
+; Device Name           ; 5CEBA4F23C7                                            ;
+; Timing Models         ; Final                                                  ;
+; Delay Model           ; Combined                                               ;
+; Rise/Fall Delays      ; Enabled                                                ;
++-----------------------+--------------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 10          ;
+;                            ;             ;
+; Average used               ; 1.70        ;
+; Maximum used               ; 10          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   8.5%      ;
+;     Processor 3            ;   8.4%      ;
+;     Processor 4            ;   8.1%      ;
+;     Processor 5            ;   7.6%      ;
+;     Processor 6            ;   7.6%      ;
+;     Processor 7            ;   7.5%      ;
+;     Processor 8            ;   7.5%      ;
+;     Processor 9            ;   7.5%      ;
+;     Processor 10           ;   7.5%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                   ;
++---------------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------+
+; Clock Name          ; Type ; Period ; Frequency ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                 ;
++---------------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------+
+; altera_reserved_tck ; Base ; 33.333 ; 30.0 MHz  ; 0.000 ; 16.666 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { altera_reserved_tck } ;
++---------------------+------+--------+-----------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-------------------------+
+
+
++----------------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary                       ;
++-----------+-----------------+---------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name          ; Note ;
++-----------+-----------------+---------------------+------+
+; 69.99 MHz ; 69.99 MHz       ; altera_reserved_tck ;      ;
++-----------+-----------------+---------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++---------------------------------------------+
+; Slow 1100mV 85C Model Setup Summary         ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 9.523 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++---------------------------------------------+
+; Slow 1100mV 85C Model Hold Summary          ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 0.535 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++----------------------------------------------+
+; Slow 1100mV 85C Model Recovery Summary       ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; altera_reserved_tck ; 30.182 ; 0.000         ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Slow 1100mV 85C Model Removal Summary       ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 1.126 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++---------------------------------------------------+
+; Slow 1100mV 85C Model Minimum Pulse Width Summary ;
++---------------------+--------+--------------------+
+; Clock               ; Slack  ; End Point TNS      ;
++---------------------+--------+--------------------+
+; altera_reserved_tck ; 15.529 ; 0.000              ;
++---------------------+--------+--------------------+
+
+
+-----------------------------------------------
+; Slow 1100mV 85C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++----------------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                        ;
++-----------+-----------------+---------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name          ; Note ;
++-----------+-----------------+---------------------+------+
+; 70.87 MHz ; 70.87 MHz       ; altera_reserved_tck ;      ;
++-----------+-----------------+---------------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++---------------------------------------------+
+; Slow 1100mV 0C Model Setup Summary          ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 9.611 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++---------------------------------------------+
+; Slow 1100mV 0C Model Hold Summary           ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 0.556 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++----------------------------------------------+
+; Slow 1100mV 0C Model Recovery Summary        ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; altera_reserved_tck ; 30.276 ; 0.000         ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Slow 1100mV 0C Model Removal Summary        ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 1.083 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++--------------------------------------------------+
+; Slow 1100mV 0C Model Minimum Pulse Width Summary ;
++---------------------+--------+-------------------+
+; Clock               ; Slack  ; End Point TNS     ;
++---------------------+--------+-------------------+
+; altera_reserved_tck ; 15.530 ; 0.000             ;
++---------------------+--------+-------------------+
+
+
+----------------------------------------------
+; Slow 1100mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++----------------------------------------------+
+; Fast 1100mV 85C Model Setup Summary          ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; altera_reserved_tck ; 13.079 ; 0.000         ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Fast 1100mV 85C Model Hold Summary          ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 0.165 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++----------------------------------------------+
+; Fast 1100mV 85C Model Recovery Summary       ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; altera_reserved_tck ; 31.371 ; 0.000         ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Fast 1100mV 85C Model Removal Summary       ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 0.459 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++---------------------------------------------------+
+; Fast 1100mV 85C Model Minimum Pulse Width Summary ;
++---------------------+--------+--------------------+
+; Clock               ; Slack  ; End Point TNS      ;
++---------------------+--------+--------------------+
+; altera_reserved_tck ; 15.311 ; 0.000              ;
++---------------------+--------+--------------------+
+
+
+-----------------------------------------------
+; Fast 1100mV 85C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++----------------------------------------------+
+; Fast 1100mV 0C Model Setup Summary           ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; altera_reserved_tck ; 13.459 ; 0.000         ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Fast 1100mV 0C Model Hold Summary           ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 0.152 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++----------------------------------------------+
+; Fast 1100mV 0C Model Recovery Summary        ;
++---------------------+--------+---------------+
+; Clock               ; Slack  ; End Point TNS ;
++---------------------+--------+---------------+
+; altera_reserved_tck ; 31.563 ; 0.000         ;
++---------------------+--------+---------------+
+
+
++---------------------------------------------+
+; Fast 1100mV 0C Model Removal Summary        ;
++---------------------+-------+---------------+
+; Clock               ; Slack ; End Point TNS ;
++---------------------+-------+---------------+
+; altera_reserved_tck ; 0.402 ; 0.000         ;
++---------------------+-------+---------------+
+
+
++--------------------------------------------------+
+; Fast 1100mV 0C Model Minimum Pulse Width Summary ;
++---------------------+--------+-------------------+
+; Clock               ; Slack  ; End Point TNS     ;
++---------------------+--------+-------------------+
+; altera_reserved_tck ; 15.297 ; 0.000             ;
++---------------------+--------+-------------------+
+
+
+----------------------------------------------
+; Fast 1100mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++---------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                             ;
++----------------------+-------+-------+----------+---------+---------------------+
+; Clock                ; Setup ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++----------------------+-------+-------+----------+---------+---------------------+
+; Worst-case Slack     ; 9.523 ; 0.152 ; 30.182   ; 0.402   ; 15.297              ;
+;  altera_reserved_tck ; 9.523 ; 0.152 ; 30.182   ; 0.402   ; 15.297              ;
+; Design-wide TNS      ; 0.0   ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  altera_reserved_tck ; 0.000 ; 0.000 ; 0.000    ; 0.000   ; 0.000               ;
++----------------------+-------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                          ;
++---------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin                 ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++---------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; xclk                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; sda                 ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; scl                 ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; reset               ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; pwdn                ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_R[0]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_R[1]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_R[2]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_R[3]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_B[0]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_B[1]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_B[2]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_B[3]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_G[0]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_G[1]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_G[2]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_G[3]            ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_VS              ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; VGA_HS              ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; HEX0[0]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; HEX0[1]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; HEX0[2]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; HEX0[3]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; HEX0[4]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; HEX0[5]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; HEX0[6]             ; 3.3-V LVTTL  ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; HEX0[7]             ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; altera_reserved_tdo ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++---------------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++----------------------------------------------------------------------------------------+
+; Input Transition Times                                                                 ;
++-------------------------------------+--------------+-----------------+-----------------+
+; Pin                                 ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++-------------------------------------+--------------+-----------------+-----------------+
+; m_clock                             ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; p_reset                             ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; href                                ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; pclk                                ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; c_vsync                             ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; in_data[0]                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; in_data[1]                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; in_data[2]                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; in_data[3]                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; in_data[4]                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; in_data[5]                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; in_data[6]                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; in_data[7]                          ; 3.3-V LVTTL  ; 2640 ps         ; 2640 ps         ;
+; altera_reserved_tms                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; altera_reserved_tck                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; altera_reserved_tdi                 ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; auto_stp_external_clock_0           ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; auto_stp_external_storage_qualifier ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
++-------------------------------------+--------------+-----------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin                 ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; xclk                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; sda                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.58e-07 V                   ; 3.09 V              ; -0.13 V             ; 0.032 V                              ; 0.298 V                              ; 4.39e-10 s                  ; 1.69e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.58e-07 V                  ; 3.09 V             ; -0.13 V            ; 0.032 V                             ; 0.298 V                             ; 4.39e-10 s                 ; 1.69e-10 s                 ; Yes                       ; Yes                       ;
+; scl                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; reset               ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.58e-07 V                   ; 3.09 V              ; -0.13 V             ; 0.032 V                              ; 0.298 V                              ; 4.39e-10 s                  ; 1.69e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.58e-07 V                  ; 3.09 V             ; -0.13 V            ; 0.032 V                             ; 0.298 V                             ; 4.39e-10 s                 ; 1.69e-10 s                 ; Yes                       ; Yes                       ;
+; pwdn                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.58e-07 V                   ; 3.09 V              ; -0.13 V             ; 0.032 V                              ; 0.298 V                              ; 4.39e-10 s                  ; 1.69e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.58e-07 V                  ; 3.09 V             ; -0.13 V            ; 0.032 V                             ; 0.298 V                             ; 4.39e-10 s                 ; 1.69e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_R[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.58e-07 V                   ; 3.09 V              ; -0.13 V             ; 0.032 V                              ; 0.298 V                              ; 4.39e-10 s                  ; 1.69e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.58e-07 V                  ; 3.09 V             ; -0.13 V            ; 0.032 V                             ; 0.298 V                             ; 4.39e-10 s                 ; 1.69e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_G[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-07 V                    ; 3.12 V              ; -0.169 V            ; 0.165 V                              ; 0.384 V                              ; 4.57e-10 s                  ; 1.75e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.1e-07 V                   ; 3.12 V             ; -0.169 V           ; 0.165 V                             ; 0.384 V                             ; 4.57e-10 s                 ; 1.75e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.58e-07 V                   ; 3.09 V              ; -0.13 V             ; 0.032 V                              ; 0.298 V                              ; 4.39e-10 s                  ; 1.69e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.58e-07 V                  ; 3.09 V             ; -0.13 V            ; 0.032 V                             ; 0.298 V                             ; 4.39e-10 s                 ; 1.69e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_VS              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; VGA_HS              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; HEX0[0]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; HEX0[1]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; HEX0[2]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; HEX0[3]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; HEX0[4]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; HEX0[5]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.132 V                              ; 0.377 V                              ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.132 V                             ; 0.377 V                             ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; HEX0[6]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.01e-07 V                   ; 3.13 V              ; -0.229 V            ; 0.131 V                              ; 0.38 V                               ; 4.37e-10 s                  ; 1.58e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.01e-07 V                  ; 3.13 V             ; -0.229 V           ; 0.131 V                             ; 0.38 V                              ; 4.37e-10 s                 ; 1.58e-10 s                 ; Yes                       ; No                        ;
+; HEX0[7]             ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.19e-07 V                   ; 2.4 V               ; -0.039 V            ; 0.21 V                               ; 0.145 V                              ; 4.67e-10 s                  ; 4.63e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.19e-07 V                  ; 2.4 V              ; -0.039 V           ; 0.21 V                              ; 0.145 V                             ; 4.67e-10 s                 ; 4.63e-10 s                 ; No                        ; Yes                       ;
+; altera_reserved_tdo ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.95e-07 V                   ; 2.4 V               ; -0.0546 V           ; 0.16 V                               ; 0.114 V                              ; 4.56e-10 s                  ; 4.36e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 1.95e-07 V                  ; 2.4 V              ; -0.0546 V          ; 0.16 V                              ; 0.114 V                             ; 4.56e-10 s                 ; 4.36e-10 s                 ; No                        ; No                        ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1100mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin                 ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; xclk                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; sda                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.66e-05 V                   ; 3.09 V              ; -0.0542 V           ; 0.04 V                               ; 0.089 V                              ; 5.35e-10 s                  ; 3.01e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.66e-05 V                  ; 3.09 V             ; -0.0542 V          ; 0.04 V                              ; 0.089 V                             ; 5.35e-10 s                 ; 3.01e-10 s                 ; Yes                       ; Yes                       ;
+; scl                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; reset               ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.66e-05 V                   ; 3.09 V              ; -0.0542 V           ; 0.04 V                               ; 0.089 V                              ; 5.35e-10 s                  ; 3.01e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.66e-05 V                  ; 3.09 V             ; -0.0542 V          ; 0.04 V                              ; 0.089 V                             ; 5.35e-10 s                 ; 3.01e-10 s                 ; Yes                       ; Yes                       ;
+; pwdn                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_R[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_R[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.66e-05 V                   ; 3.09 V              ; -0.0542 V           ; 0.04 V                               ; 0.089 V                              ; 5.35e-10 s                  ; 3.01e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.66e-05 V                  ; 3.09 V             ; -0.0542 V          ; 0.04 V                              ; 0.089 V                             ; 5.35e-10 s                 ; 3.01e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_R[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_B[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.66e-05 V                   ; 3.09 V              ; -0.0542 V           ; 0.04 V                               ; 0.089 V                              ; 5.35e-10 s                  ; 3.01e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.66e-05 V                  ; 3.09 V             ; -0.0542 V          ; 0.04 V                              ; 0.089 V                             ; 5.35e-10 s                 ; 3.01e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_G[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.1e-05 V                    ; 3.11 V              ; -0.0931 V           ; 0.115 V                              ; 0.142 V                              ; 5.74e-10 s                  ; 3.17e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 2.1e-05 V                   ; 3.11 V             ; -0.0931 V          ; 0.115 V                             ; 0.142 V                             ; 5.74e-10 s                 ; 3.17e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_G[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 1.66e-05 V                   ; 3.09 V              ; -0.0542 V           ; 0.04 V                               ; 0.089 V                              ; 5.35e-10 s                  ; 3.01e-10 s                  ; Yes                        ; Yes                        ; 3.08 V                      ; 1.66e-05 V                  ; 3.09 V             ; -0.0542 V          ; 0.04 V                              ; 0.089 V                             ; 5.35e-10 s                 ; 3.01e-10 s                 ; Yes                       ; Yes                       ;
+; VGA_VS              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; VGA_HS              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; HEX0[0]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; HEX0[1]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; HEX0[2]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; HEX0[3]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; HEX0[4]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; HEX0[5]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.148 V                              ; 5.31e-10 s                  ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.148 V                             ; 5.31e-10 s                 ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; HEX0[6]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.08 V                       ; 2.02e-05 V                   ; 3.11 V              ; -0.117 V            ; 0.087 V                              ; 0.147 V                              ; 5.3e-10 s                   ; 3.14e-10 s                  ; Yes                        ; No                         ; 3.08 V                      ; 2.02e-05 V                  ; 3.11 V             ; -0.117 V           ; 0.087 V                             ; 0.147 V                             ; 5.3e-10 s                  ; 3.14e-10 s                 ; Yes                       ; No                        ;
+; HEX0[7]             ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.56e-05 V                   ; 2.38 V              ; -0.026 V            ; 0.249 V                              ; 0.089 V                              ; 4.95e-10 s                  ; 6.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.56e-05 V                  ; 2.38 V             ; -0.026 V           ; 0.249 V                             ; 0.089 V                             ; 4.95e-10 s                 ; 6.01e-10 s                 ; No                        ; Yes                       ;
+; altera_reserved_tdo ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.26e-05 V                   ; 2.37 V              ; -0.036 V            ; 0.182 V                              ; 0.159 V                              ; 4.8e-10 s                   ; 4.68e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.26e-05 V                  ; 2.37 V             ; -0.036 V           ; 0.182 V                             ; 0.159 V                             ; 4.8e-10 s                  ; 4.68e-10 s                 ; Yes                       ; Yes                       ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin                 ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; xclk                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; sda                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; scl                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; reset               ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; pwdn                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; VGA_R[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; VGA_G[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.94e-06 V                   ; 3.69 V              ; -0.414 V            ; 0.134 V                              ; 0.585 V                              ; 4.19e-10 s                  ; 1.53e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.94e-06 V                  ; 3.69 V             ; -0.414 V           ; 0.134 V                             ; 0.585 V                             ; 4.19e-10 s                 ; 1.53e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 3.63e-06 V                   ; 3.64 V              ; -0.326 V            ; 0.091 V                              ; 0.479 V                              ; 3.83e-10 s                  ; 1.5e-10 s                   ; Yes                        ; No                         ; 3.63 V                      ; 3.63e-06 V                  ; 3.64 V             ; -0.326 V           ; 0.091 V                             ; 0.479 V                             ; 3.83e-10 s                 ; 1.5e-10 s                  ; Yes                       ; No                        ;
+; VGA_VS              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; VGA_HS              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; HEX0[0]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; HEX0[1]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; HEX0[2]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; HEX0[3]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; HEX0[4]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; HEX0[5]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.621 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.621 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; HEX0[6]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 4.72e-06 V                   ; 3.7 V               ; -0.49 V             ; 0.117 V                              ; 0.622 V                              ; 3.84e-10 s                  ; 1.48e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 4.72e-06 V                  ; 3.7 V              ; -0.49 V            ; 0.117 V                             ; 0.622 V                             ; 3.84e-10 s                 ; 1.48e-10 s                 ; Yes                       ; No                        ;
+; HEX0[7]             ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; altera_reserved_tdo ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.79e-06 V                   ; 2.9 V               ; -0.122 V            ; 0.313 V                              ; 0.277 V                              ; 2.78e-10 s                  ; 2.7e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 3.79e-06 V                  ; 2.9 V              ; -0.122 V           ; 0.313 V                             ; 0.277 V                             ; 2.78e-10 s                 ; 2.7e-10 s                  ; No                        ; No                        ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1100mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin                 ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; xclk                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; sda                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; scl                 ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; reset               ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; pwdn                ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; VGA_R[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; VGA_B[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[0]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[1]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[2]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000238 V                   ; 3.64 V              ; -0.254 V            ; 0.052 V                              ; 0.543 V                              ; 4.59e-10 s                  ; 1.96e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000238 V                  ; 3.64 V             ; -0.254 V           ; 0.052 V                             ; 0.543 V                             ; 4.59e-10 s                 ; 1.96e-10 s                 ; Yes                       ; No                        ;
+; VGA_G[3]            ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000184 V                   ; 3.64 V              ; -0.19 V             ; 0.019 V                              ; 0.425 V                              ; 4.44e-10 s                  ; 1.91e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000184 V                  ; 3.64 V             ; -0.19 V            ; 0.019 V                             ; 0.425 V                             ; 4.44e-10 s                 ; 1.91e-10 s                 ; Yes                       ; No                        ;
+; VGA_VS              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; VGA_HS              ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; HEX0[0]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; HEX0[1]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; HEX0[2]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; HEX0[3]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; HEX0[4]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; HEX0[5]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.319 V            ; 0.041 V                              ; 0.528 V                              ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.319 V           ; 0.041 V                             ; 0.528 V                             ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; HEX0[6]             ; 3.3-V LVTTL  ; 0 s                 ; 0 s                 ; 3.63 V                       ; 0.000229 V                   ; 3.65 V              ; -0.316 V            ; 0.041 V                              ; 0.53 V                               ; 4.29e-10 s                  ; 1.87e-10 s                  ; Yes                        ; No                         ; 3.63 V                      ; 0.000229 V                  ; 3.65 V             ; -0.316 V           ; 0.041 V                             ; 0.53 V                              ; 4.29e-10 s                 ; 1.87e-10 s                 ; Yes                       ; No                        ;
+; HEX0[7]             ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; altera_reserved_tdo ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000219 V                   ; 2.85 V              ; -0.0938 V           ; 0.339 V                              ; 0.156 V                              ; 3.08e-10 s                  ; 4.29e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000219 V                  ; 2.85 V             ; -0.0938 V          ; 0.339 V                             ; 0.156 V                             ; 3.08e-10 s                 ; 4.29e-10 s                 ; No                        ; No                        ;
++---------------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++---------------------------------------------------------------------------------------+
+; Setup Transfers                                                                       ;
++---------------------+---------------------+----------+----------+----------+----------+
+; From Clock          ; To Clock            ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------+---------------------+----------+----------+----------+----------+
+; altera_reserved_tck ; altera_reserved_tck ; 4535     ; 0        ; 55       ; 0        ;
++---------------------+---------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++---------------------------------------------------------------------------------------+
+; Hold Transfers                                                                        ;
++---------------------+---------------------+----------+----------+----------+----------+
+; From Clock          ; To Clock            ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------+---------------------+----------+----------+----------+----------+
+; altera_reserved_tck ; altera_reserved_tck ; 4535     ; 0        ; 55       ; 0        ;
++---------------------+---------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++---------------------------------------------------------------------------------------+
+; Recovery Transfers                                                                    ;
++---------------------+---------------------+----------+----------+----------+----------+
+; From Clock          ; To Clock            ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------+---------------------+----------+----------+----------+----------+
+; altera_reserved_tck ; altera_reserved_tck ; 99       ; 0        ; 0        ; 0        ;
++---------------------+---------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++---------------------------------------------------------------------------------------+
+; Removal Transfers                                                                     ;
++---------------------+---------------------+----------+----------+----------+----------+
+; From Clock          ; To Clock            ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++---------------------+---------------------+----------+----------+----------+----------+
+; altera_reserved_tck ; altera_reserved_tck ; 99       ; 0        ; 0        ; 0        ;
++---------------------+---------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 2     ; 2    ;
+; Unconstrained Input Ports       ; 15    ; 15   ;
+; Unconstrained Input Port Paths  ; 379   ; 379  ;
+; Unconstrained Output Ports      ; 25    ; 25   ;
+; Unconstrained Output Port Paths ; 230   ; 230  ;
++---------------------------------+-------+------+
+
+
++------------------------------------------------------------------------+
+; Clock Status Summary                                                   ;
++---------------------------+---------------------+------+---------------+
+; Target                    ; Clock               ; Type ; Status        ;
++---------------------------+---------------------+------+---------------+
+; altera_reserved_tck       ; altera_reserved_tck ; Base ; Constrained   ;
+; auto_stp_external_clock_0 ;                     ; Base ; Unconstrained ;
+; m_clock                   ;                     ; Base ; Unconstrained ;
++---------------------------+---------------------+------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                                  ;
++-------------------------------------+--------------------------------------------------------------------------------------+
+; Input Port                          ; Comment                                                                              ;
++-------------------------------------+--------------------------------------------------------------------------------------+
+; altera_reserved_tdi                 ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tms                 ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; auto_stp_external_storage_qualifier ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; c_vsync                             ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; href                                ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[0]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[1]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[2]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[3]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[4]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[5]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[6]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[7]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; p_reset                             ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pclk                                ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------------------------------+--------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                                  ;
++---------------------+---------------------------------------------------------------------------------------+
+; Output Port         ; Comment                                                                               ;
++---------------------+---------------------------------------------------------------------------------------+
+; HEX0[0]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[1]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[2]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[3]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[4]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[5]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[6]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[0]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[1]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[2]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[3]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[0]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[1]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[2]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[3]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_HS              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[0]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[1]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[2]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[3]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_VS              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tdo ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; scl                 ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; sda                 ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; xclk                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++---------------------+---------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                                                  ;
++-------------------------------------+--------------------------------------------------------------------------------------+
+; Input Port                          ; Comment                                                                              ;
++-------------------------------------+--------------------------------------------------------------------------------------+
+; altera_reserved_tdi                 ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tms                 ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; auto_stp_external_storage_qualifier ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; c_vsync                             ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; href                                ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[0]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[1]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[2]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[3]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[4]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[5]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[6]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; in_data[7]                          ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; p_reset                             ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pclk                                ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------------------------------+--------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                                  ;
++---------------------+---------------------------------------------------------------------------------------+
+; Output Port         ; Comment                                                                               ;
++---------------------+---------------------------------------------------------------------------------------+
+; HEX0[0]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[1]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[2]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[3]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[4]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[5]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; HEX0[6]             ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[0]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[1]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[2]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_B[3]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[0]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[1]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[2]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_G[3]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_HS              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[0]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[1]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[2]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_R[3]            ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; VGA_VS              ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; altera_reserved_tdo ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; scl                 ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; sda                 ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; xclk                ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++---------------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Mon Aug 12 00:28:49 2024
+Info: Command: quartus_sta cam_test -c cam_test
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '85'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (332164): Evaluating HDL-embedded SDC commands
+    Info (332165): Entity sld_hub
+        Info (332166): create_clock -name altera_reserved_tck [get_ports {altera_reserved_tck}] -period 30MHz   
+        Info (332166): if { [string equal quartus_fit $::TimeQuestInfo(nameofexecutable)] } { set_max_delay -to [get_ports { altera_reserved_tdo } ] 0 }
+        Info (332166): set_clock_groups -asynchronous -group {altera_reserved_tck}
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'cam_test.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Warning (332060): Node: m_clock was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register VGA:VGA_out|hs_cnt[8] is being clocked by m_clock
+Warning (332060): Node: auto_stp_external_clock_0 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|\storage_qualifier_buffer_manager:done is being clocked by auto_stp_external_clock_0
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1100mV 85C Model
+Info (332146): Worst-case setup slack is 9.523
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.523               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.535
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.535               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 30.182
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    30.182               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 1.126
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.126               0.000 altera_reserved_tck 
+Info (332146): Worst-case minimum pulse width slack is 15.529
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    15.529               0.000 altera_reserved_tck 
+Info: Analyzing Slow 1100mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Warning (332060): Node: m_clock was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register VGA:VGA_out|hs_cnt[8] is being clocked by m_clock
+Warning (332060): Node: auto_stp_external_clock_0 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|\storage_qualifier_buffer_manager:done is being clocked by auto_stp_external_clock_0
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332146): Worst-case setup slack is 9.611
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.611               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.556
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.556               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 30.276
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    30.276               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 1.083
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.083               0.000 altera_reserved_tck 
+Info (332146): Worst-case minimum pulse width slack is 15.530
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    15.530               0.000 altera_reserved_tck 
+Info: Analyzing Fast 1100mV 85C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Warning (332060): Node: m_clock was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register VGA:VGA_out|hs_cnt[8] is being clocked by m_clock
+Warning (332060): Node: auto_stp_external_clock_0 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|\storage_qualifier_buffer_manager:done is being clocked by auto_stp_external_clock_0
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332146): Worst-case setup slack is 13.079
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    13.079               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.165
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.165               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 31.371
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    31.371               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.459
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.459               0.000 altera_reserved_tck 
+Info (332146): Worst-case minimum pulse width slack is 15.311
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    15.311               0.000 altera_reserved_tck 
+Info: Analyzing Fast 1100mV 0C Model
+Warning (332060): Node: m_clock was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register VGA:VGA_out|hs_cnt[8] is being clocked by m_clock
+Warning (332060): Node: auto_stp_external_clock_0 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register sld_signaltap:auto_signaltap_0|sld_signaltap_impl:sld_signaltap_body|sld_signaltap_implb:sld_signaltap_body|sld_buffer_manager:sld_buffer_manager_inst|\storage_qualifier_buffer_manager:done is being clocked by auto_stp_external_clock_0
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332146): Worst-case setup slack is 13.459
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    13.459               0.000 altera_reserved_tck 
+Info (332146): Worst-case hold slack is 0.152
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.152               0.000 altera_reserved_tck 
+Info (332146): Worst-case recovery slack is 31.563
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    31.563               0.000 altera_reserved_tck 
+Info (332146): Worst-case removal slack is 0.402
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.402               0.000 altera_reserved_tck 
+Info (332146): Worst-case minimum pulse width slack is 15.297
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    15.297               0.000 altera_reserved_tck 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 5201 megabytes
+    Info: Processing ended: Mon Aug 12 00:28:54 2024
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:04
+
+

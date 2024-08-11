@@ -1,0 +1,60 @@
+%i "cam_test.inc"
+%i "VGA.inc"
+%i "camera.inc"
+%i "vram.inc"
+
+module cam_test{
+	VGA VGA_out;
+    camera camera_out;
+    vram vram_x[3];
+    reg VGA_plot_num_x[32]=32'b0;
+    reg VGA_plot_num_y[32]=32'b0;
+    reg plot_num_x[32]=32'b0;
+    wire plot_num[32];
+    wire plot_nums[32];
+    reg plot_num_y[32]=32'b0;
+    VGA_VS=VGA_out.VGA_VS;
+    HEX0=VGA_out.HEX0;   
+    VGA_HS=VGA_out.VGA_HS;
+    xclk=camera_out.xclk;
+    sda=camera_out.sda;
+    scl=camera_out.scl;
+    pwdn=camera_out.pwdn;
+    camera_out.href=href;
+    camera_out.pclk=pclk;
+    reset=camera_out.reset;
+    camera_out.in_data=in_data;
+    camera_out.c_vsync=c_vsync;
+    plot_num_x:=32'(camera_out.out_plot_num_x);
+    plot_num_y:=(32'(camera_out.out_plot_num_y))<<7;
+    VGA_plot_num_x:=32'(VGA_out.plot_num_x);
+    VGA_plot_num_y:=(32'(VGA_out.plot_num_y))<<7;
+    if(camera_out.out_plot_num_x>=0&&camera_out.out_plot_num_x<128&&camera_out.out_plot_num_y>=0&&camera_out.out_plot_num_y<128){
+        plot_num=32'((32'(plot_num_x))+(32'((32'(plot_num_y)))));
+            vram_x[0].data=camera_out.VGA_B;
+            vram_x[0].wren=1'b1;
+            vram_x[0].wraddress=plot_num[13:0];
+
+       
+           vram_x[1].data=camera_out.VGA_G;
+            vram_x[2].data=camera_out.VGA_R;
+            vram_x[1].wren=1'b1;
+            vram_x[2].wren=1'b1;
+            vram_x[1].wraddress=plot_num[13:0];
+            vram_x[2].wraddress=plot_num[13:0];
+        
+    }
+    if((VGA_out.plot_num_x-7)>=0&&(VGA_out.plot_num_x-7)<128&&(VGA_out.plot_num_y>=0)&&VGA_out.plot_num_y<128){
+        plot_nums=32'((32'(VGA_plot_num_x))+(32'((32'(VGA_plot_num_y)))));       
+        vram_x[0].rdaddress=plot_nums[13:0];
+        vram_x[1].rdaddress=plot_nums[13:0];
+        vram_x[2].rdaddress=plot_nums[13:0];
+        VGA_B=vram_x[0].q;
+        VGA_G=vram_x[1].q;
+        VGA_R=vram_x[2].q;
+    }else{
+        VGA_R=0x0;
+        VGA_G=0x0;
+        VGA_B=0x0;
+    }
+}

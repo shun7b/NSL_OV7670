@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Mon Aug 12 00:26:55 2024
+Quartus Prime Version : 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Revision Name : cam_test
+Top-level Entity Name : cam_test
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 660
+Total pins : 42
+Total virtual pins : 0
+Total block memory bits : 196,864
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0
