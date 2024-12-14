@@ -109,9 +109,10 @@ module cam_test ( p_reset , m_clock , in_data , href , pclk , xclk , c_vsync , s
   wire [31:0] _net_13;
   wire [31:0] _net_14;
   wire [31:0] _net_15;
-vram vram_x (.clock(m_clock), .data(_vram_x_data), .rdaddress(_vram_x_rdaddress), .wraddress(_vram_x_wraddress), .wren(_vram_x_wren), .q(_vram_x_q));
-vram vram_x_2 (.clock(m_clock), .data(_vram_x_2_data), .rdaddress(_vram_x_2_rdaddress), .wraddress(_vram_x_2_wraddress), .wren(_vram_x_2_wren), .q(_vram_x_2_q));
-vram vram_x_1 (.clock(m_clock), .data(_vram_x_1_data), .rdaddress(_vram_x_1_rdaddress), .wraddress(_vram_x_1_wraddress), .wren(_vram_x_1_wren), .q(_vram_x_1_q));
+  
+B vram_x (.clock(m_clock), .data(_vram_x_data), .rdaddress(_vram_x_rdaddress), .wraddress(_vram_x_wraddress), .wren(_vram_x_wren), .q(_vram_x_q));
+G vram_x_2 (.clock(m_clock), .data(_vram_x_2_data), .rdaddress(_vram_x_2_rdaddress), .wraddress(_vram_x_2_wraddress), .wren(_vram_x_2_wren), .q(_vram_x_2_q));
+R vram_x_1 (.clock(m_clock), .data(_vram_x_1_data), .rdaddress(_vram_x_1_rdaddress), .wraddress(_vram_x_1_wraddress), .wren(_vram_x_1_wren), .q(_vram_x_1_q));
 camera camera_out (.m_clock(m_clock), .p_reset( p_reset), .out_plot_num_y(_camera_out_out_plot_num_y), .out_plot_num_x(_camera_out_out_plot_num_x), .time_RGB(_camera_out_time_RGB), .VGA_R(_camera_out_VGA_R), .VGA_B(_camera_out_VGA_B), .VGA_G(_camera_out_VGA_G), .sda(_camera_out_sda), .scl(_camera_out_scl), .reset(_camera_out_reset), .pwdn(_camera_out_pwdn), .c_vsync(_camera_out_c_vsync), .xclk(_camera_out_xclk), .pclk(_camera_out_pclk), .href(_camera_out_href), .in_data(_camera_out_in_data));
 VGA VGA_out (.m_clock(m_clock), .p_reset( p_reset), .VGA_RI(_VGA_out_VGA_RI), .VGA_R(_VGA_out_VGA_R), .VGA_B(_VGA_out_VGA_B), .VGA_G(_VGA_out_VGA_G), .VGA_VS(_VGA_out_VGA_VS), .VGA_HS(_VGA_out_VGA_HS), .HEX0(_VGA_out_HEX0), .plot_num_x(_VGA_out_plot_num_x), .plot_num_y(_VGA_out_plot_num_y));
 
@@ -443,6 +444,7 @@ if (~p_reset)
      plot_num_y <= 32'b00000000000000000000000000000000;
 else   plot_num_y <= (_net_2[56:25]);
 end
+
 endmodule
 
 /*Produced by NSL Core(version=20240424), IP ARCH, Inc. Mon Aug 12 00:06:14 2024

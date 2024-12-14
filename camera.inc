@@ -1,3 +1,4 @@
+#define LIMIT_PC 160
 declare camera{
     input in_data[8];
 	input href;
