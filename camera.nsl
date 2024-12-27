@@ -1,7 +1,7 @@
 %i "camera.inc"
 module camera{
 	mem sda_OV[256][16]={
-     0x1280, 
+     /*0x1280, 
             0x1101, 
             0x3A0D, 
             0x1204, 
@@ -123,7 +123,7 @@ module camera{
          0x4B09, 
           0xC960, 
           0x4138, 
-          0x5640, 
+          0x5860, 
           0x3411, 
           0x3B12, 
           0xA488, 
@@ -161,8 +161,8 @@ module camera{
           0xC830, 
           0x7926, 
           0xFFFB, 
-          0xFFFF, 
-         /* 0x1204,
+          0xFFFF, */
+          0x1204,
 0x40D0,
 0x8C02,
 0x703a,
@@ -272,7 +272,7 @@ module camera{
 0x4B09,
 0xC960,
 0x4138,
-0x5640,
+0x5860,
 0x3411,
 0x3B12,
 0xA488,
@@ -287,12 +287,12 @@ module camera{
 0x9E3F,
 0x7804,
 0x7901,
-0xC8F0,*/
+0xC8F0,
 0xFFFF,
 0xFFFF
 	};
   reg count[10]=10'b0;
-  reg sda_clk[9]=9'b0;
+  reg sda_sig[16]=16'b0;
   reg scl_reg=1'b0;
   reg sda_reg=1'b0;
     reg times=1'b0;
@@ -304,13 +304,13 @@ module camera{
 	reg plot_num_x[10]=10'b0;
 	reg plot_num_y[10]=10'b0;
   reg pc[10]=10'b0;
-  reg scl_clk[10]=10'b0;
+  reg scl_clk[BIT_SCL]=BIT_SCL'b0;
   wire in_hex[4],out_acii[8];
-  reg start_count[11]=11'b0;
+  reg start_count[32]=32'b0;
   reg tx_count[6]=6'b0;
   reg I2C_START_STOP[10]=10'b0;
-  if((pc<LIMIT_PC)&&(scl_clk==64)&&(0d9>I2C_START_STOP)&&(0d0<I2C_START_STOP)||start_count==1221){
-      if(count==0d25){
+  if((pc<LIMIT_PC)&&((scl_clk==WAIT_STA)&&(start_count>(WAIT-1)&&pc==0||start_count>(WAIT_PC-1)&&pc!=0)&&I2C_START_STOP<0d8||((count==MAX_COUNT))||((scl_clk==WAIT_STA)&&(count==MAX_COUNT-1)&&start_count>WAIT-1))){
+      if(count==0dMAX_COUNT){
         if(sda_OV[pc]==0xFFFF){
           pc:=LIMIT_PC;
           count:=99;
@@ -323,48 +323,52 @@ module camera{
         count++;
       }
     }
-  if(start_count>1223){
-      if(count==25){
+  if(start_count>WAIT-1&&pc==0||start_count>WAIT_PC-1&&pc!=0){
+     if(count==MAX_COUNT){
         start_count:=0;
         
       }
-      if(count!=25){
-        start_count:=1222;
+      if(count!=MAX_COUNT&&pc==0){
+        start_count:=32'0dWAIT;
+      }
+      
+      if(count!=MAX_COUNT&&pc!=0){
+        start_count:=32'0dWAIT_PC;
       }
   }else{
     start_count++;
   }
-   if(scl_clk==(10'(0d256))||start_count<1222){
+   if(scl_clk==(BIT_SCL'0dSCL_FULL_TIME)||start_count<WAIT-1&&pc==0||start_count<WAIT_PC-1&&pc!=0){
             scl_clk:=0;
-    }else{
+    }else{  
          scl_clk++;
     }
     
     if(scl_clk==0){
-        if(I2C_START_STOP==9&&0d25>count||start_count<1222){
+        if(I2C_START_STOP==8&&0d25>count||start_count<WAIT&&pc==0||start_count<WAIT_PC&&pc!=0){
           I2C_START_STOP:=0;
         }else{
           I2C_START_STOP++;
         }
     } 
-  if(start_count>1221){ 
-    if((scl_clk==128)){
+  if(start_count>32'(0dWAIT-0d1)&&pc==0||start_count>32'(0dWAIT_PC-0d1)&&pc!=0){ 
+    if(start_count<32'(0dWAIT_PC)&&pc!=0||start_count<32'(0dWAIT)&&pc==0||(scl_clk==SCL_HARF_TIME)){
          scl_reg:=0b1;
     }
-    if(scl_clk==0){
+    if(scl_clk==0&&(count!=MAX_COUNT)){
         scl_reg:=0b0;
     }
    
       
   
     
-    if((pc<LIMIT_PC)&&(scl_clk==64)&&(0d9>I2C_START_STOP)&&(0d0<I2C_START_STOP)){
+    if((pc<LIMIT_PC)&&(scl_clk==WAIT_STA)&&(0d8>I2C_START_STOP)){
       if(count==0){
         
       
       
             
-        adr:=7'b0010001;
+        adr:=7'b1000010;
         sda_reg:=0b0;
         
       }
@@ -374,23 +378,24 @@ module camera{
         sda_reg:=adr[6];
       }
       if(count==8){
-        sda_reg:=0b0;
-      }
-      if(count==9){
-        tx_count:=14;
         sda_reg:=sda_OV[pc][15];
+        sda_sig:=sda_OV[pc];
+        
       }
-      if((count>9&&count<18)||(count>17&&count<25)){
-        sda_reg:=sda_OV[pc][tx_count];
-        if(tx_count>0){
-          tx_count--;
-        }
+      if(count==16){
+       // sda_sig:=sda_sig<<1;
       }
-      
+      if((count>8&&count<25)){
+        sda_reg:=sda_sig[14];
+        sda_sig:=sda_sig<<1;
+      }
+      if(count==25){
+        sda_reg:=0;
+      }
     } 
   }
   
-  scl=(scl_reg||(start_count<1221)||(pc==LIMIT_PC));
+  scl=(count==25&&I2C_START_STOP==1||scl_reg||(start_count<WAIT)&&pc==0||(start_count<WAIT_PC)&&pc!=0||(pc==LIMIT_PC))||count==(MAX_COUNT)||count==MAX_COUNT-1&&I2C_START_STOP==8;
  
 	if(href&&~c_vsync&&pclk){
 		if(~times){
@@ -425,5 +430,5 @@ module camera{
 	VGA_B=arg_b;
 	VGA_G=arg_g;
 	xclk=clk;
-  sda=(sda_reg||((start_count<1121)||count==25));
-}
+  sda=count==25&&I2C_START_STOP==1||count==16&&I2C_START_STOP==0||count==MAX_COUNT-2&&I2C_START_STOP==8||start_count<(WAIT-SCL_FULL_TIME-2)&&pc==0||start_count<(WAIT_PC-SCL_FULL_TIME-2)&&pc!=0||count==MAX_COUNT||sda_reg&&count!=MAX_COUNT-1||I2C_START_STOP==8||(I2C_START_STOP==1&&scl_clk<WAIT_STA&&sda_reg&&pc==0);
+}  

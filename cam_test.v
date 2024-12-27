@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Mon Aug 12 00:06:14 2024
+/*Produced by NSL Core(version=20240708), IP ARCH, Inc. Fri Dec 20 15:23:16 2024
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -72,25 +72,46 @@ module cam_test ( p_reset , m_clock , in_data , href , pclk , xclk , c_vsync , s
   wire [9:0] _camera_out_out_plot_num_y;
   wire _camera_out_p_reset;
   wire _camera_out_m_clock;
-  wire [3:0] _vram_x_data;
-  wire [13:0] _vram_x_rdaddress;
-  wire [13:0] _vram_x_wraddress;
-  wire _vram_x_wren;
+  wire _camera_ap_sccb_hsync;
+  wire _camera_ap_sccb_vsync;
+  wire [3:0] _camera_ap_sccb_da_b;
+  wire [3:0] _camera_ap_sccb_da_g;
+  wire [3:0] _camera_ap_sccb_da_r;
+  wire _camera_ap_sccb_vga_clk;
+  wire _camera_ap_sccb_mon;
+  wire [7:0] _camera_ap_sccb_i_in_data;
+  wire _camera_ap_sccb_i_href;
+  wire _camera_ap_sccb_i_c_vsync;
+  wire _camera_ap_sccb_i_pclk;
+  wire _camera_ap_sccb_xclk;
+  wire _camera_ap_sccb_rxd;
+  wire _camera_ap_sccb_txd;
+  wire _camera_ap_sccb_sda;
+  wire _camera_ap_sccb_scl;
+  wire _camera_ap_sccb_init_n;
+  wire _camera_ap_sccb_dmy_camera_mode;
+  wire _camera_ap_sccb_led_0;
+  wire _camera_ap_sccb_p_reset;
+  wire _camera_ap_sccb_m_clock;
   wire [3:0] _vram_x_q;
+  wire _vram_x_wren;
+  wire [13:0] _vram_x_wraddress;
+  wire [13:0] _vram_x_rdaddress;
+  wire [3:0] _vram_x_data;
   wire _vram_x_p_reset;
   wire _vram_x_m_clock;
-  wire [3:0] _vram_x_2_data;
-  wire [13:0] _vram_x_2_rdaddress;
-  wire [13:0] _vram_x_2_wraddress;
-  wire _vram_x_2_wren;
   wire [3:0] _vram_x_2_q;
+  wire _vram_x_2_wren;
+  wire [13:0] _vram_x_2_wraddress;
+  wire [13:0] _vram_x_2_rdaddress;
+  wire [3:0] _vram_x_2_data;
   wire _vram_x_2_p_reset;
   wire _vram_x_2_m_clock;
-  wire [3:0] _vram_x_1_data;
-  wire [13:0] _vram_x_1_rdaddress;
-  wire [13:0] _vram_x_1_wraddress;
-  wire _vram_x_1_wren;
   wire [3:0] _vram_x_1_q;
+  wire _vram_x_1_wren;
+  wire [13:0] _vram_x_1_wraddress;
+  wire [13:0] _vram_x_1_rdaddress;
+  wire [3:0] _vram_x_1_data;
   wire _vram_x_1_p_reset;
   wire _vram_x_1_m_clock;
   wire [9:0] _net_0;
@@ -109,10 +130,10 @@ module cam_test ( p_reset , m_clock , in_data , href , pclk , xclk , c_vsync , s
   wire [31:0] _net_13;
   wire [31:0] _net_14;
   wire [31:0] _net_15;
-  
-B vram_x (.clock(m_clock), .data(_vram_x_data), .rdaddress(_vram_x_rdaddress), .wraddress(_vram_x_wraddress), .wren(_vram_x_wren), .q(_vram_x_q));
-G vram_x_2 (.clock(m_clock), .data(_vram_x_2_data), .rdaddress(_vram_x_2_rdaddress), .wraddress(_vram_x_2_wraddress), .wren(_vram_x_2_wren), .q(_vram_x_2_q));
-R vram_x_1 (.clock(m_clock), .data(_vram_x_1_data), .rdaddress(_vram_x_1_rdaddress), .wraddress(_vram_x_1_wraddress), .wren(_vram_x_1_wren), .q(_vram_x_1_q));
+B vram_x ( .data(_vram_x_data),.inclock(pclk),.outclock(m_clock), .rdaddress(_vram_x_rdaddress), .wraddress(_vram_x_wraddress), .wren(_vram_x_wren), .q(_vram_x_q));
+G vram_x_2 ( .data(_vram_x_2_data),.inclock(pclk),.outclock(m_clock), .rdaddress(_vram_x_2_rdaddress), .wraddress(_vram_x_2_wraddress), .wren(_vram_x_2_wren), .q(_vram_x_2_q));
+R vram_x_1 ( .data(_vram_x_1_data),.inclock(pclk),.outclock(m_clock), .rdaddress(_vram_x_1_rdaddress), .wraddress(_vram_x_1_wraddress), .wren(_vram_x_1_wren), .q(_vram_x_1_q));
+camera_ap camera_ap_sccb (.clk_50m(m_clock), .rstb( p_reset), .led_0(_camera_ap_sccb_led_0), .dmy_camera_mode(_camera_ap_sccb_dmy_camera_mode), .init_n( p_reset), .scl(_camera_ap_sccb_scl), .sda(_camera_ap_sccb_sda), .txd(_camera_ap_sccb_txd), .rxd(_camera_ap_sccb_rxd), .xclk(_camera_ap_sccb_xclk), .i_pclk(_camera_ap_sccb_i_pclk), .i_c_vsync(_camera_ap_sccb_i_c_vsync), .i_href(_camera_ap_sccb_i_href), .i_in_data(_camera_ap_sccb_i_in_data), .mon(_camera_ap_sccb_mon), .vga_clk(_camera_ap_sccb_vga_clk), .da_r(_camera_ap_sccb_da_r), .da_g(_camera_ap_sccb_da_g), .da_b(_camera_ap_sccb_da_b), .vsync(_camera_ap_sccb_vsync), .hsync(_camera_ap_sccb_hsync));
 camera camera_out (.m_clock(m_clock), .p_reset( p_reset), .out_plot_num_y(_camera_out_out_plot_num_y), .out_plot_num_x(_camera_out_out_plot_num_x), .time_RGB(_camera_out_time_RGB), .VGA_R(_camera_out_VGA_R), .VGA_B(_camera_out_VGA_B), .VGA_G(_camera_out_VGA_G), .sda(_camera_out_sda), .scl(_camera_out_scl), .reset(_camera_out_reset), .pwdn(_camera_out_pwdn), .c_vsync(_camera_out_c_vsync), .xclk(_camera_out_xclk), .pclk(_camera_out_pclk), .href(_camera_out_href), .in_data(_camera_out_in_data));
 VGA VGA_out (.m_clock(m_clock), .p_reset( p_reset), .VGA_RI(_VGA_out_VGA_RI), .VGA_R(_VGA_out_VGA_R), .VGA_B(_VGA_out_VGA_B), .VGA_G(_VGA_out_VGA_G), .VGA_VS(_VGA_out_VGA_VS), .VGA_HS(_VGA_out_VGA_HS), .HEX0(_VGA_out_HEX0), .plot_num_x(_VGA_out_plot_num_x), .plot_num_y(_VGA_out_plot_num_y));
 
@@ -150,29 +171,18 @@ VGA VGA_out (.m_clock(m_clock), .p_reset( p_reset), .VGA_RI(_VGA_out_VGA_RI), .V
    assign  _camera_out_c_vsync = c_vsync;
    assign  _camera_out_p_reset = p_reset;
    assign  _camera_out_m_clock = m_clock;
-   assign  _vram_x_data = 
+   assign  _camera_ap_sccb_p_reset = p_reset;
+   assign  _camera_ap_sccb_m_clock = m_clock;
+   assign  _vram_x_wren = 
 // synthesis translate_off
 // synopsys translate_off
 (_net_6)? 
 // synthesis translate_on
 // synopsys translate_on
-((_net_6)?_camera_out_VGA_B:4'b0)
+_net_6
 // synthesis translate_off
 // synopsys translate_off
-:4'bx
-// synthesis translate_on
-// synopsys translate_on
-;
-   assign  _vram_x_rdaddress = 
-// synthesis translate_off
-// synopsys translate_off
-(_net_11)? 
-// synthesis translate_on
-// synopsys translate_on
-((_net_11)?(plot_nums[13:0]):14'b0)
-// synthesis translate_off
-// synopsys translate_off
-:14'bx
+:1'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
@@ -189,35 +199,7 @@ VGA VGA_out (.m_clock(m_clock), .p_reset( p_reset), .VGA_RI(_VGA_out_VGA_RI), .V
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _vram_x_wren = 
-// synthesis translate_off
-// synopsys translate_off
-(_net_6)? 
-// synthesis translate_on
-// synopsys translate_on
-_net_6
-// synthesis translate_off
-// synopsys translate_off
-:1'bx
-// synthesis translate_on
-// synopsys translate_on
-;
-   assign  _vram_x_p_reset = p_reset;
-   assign  _vram_x_m_clock = m_clock;
-   assign  _vram_x_2_data = 
-// synthesis translate_off
-// synopsys translate_off
-(_net_6)? 
-// synthesis translate_on
-// synopsys translate_on
-((_net_6)?_camera_out_VGA_R:4'b0)
-// synthesis translate_off
-// synopsys translate_off
-:4'bx
-// synthesis translate_on
-// synopsys translate_on
-;
-   assign  _vram_x_2_rdaddress = 
+   assign  _vram_x_rdaddress = 
 // synthesis translate_off
 // synopsys translate_off
 (_net_11)? 
@@ -227,6 +209,34 @@ _net_6
 // synthesis translate_off
 // synopsys translate_off
 :14'bx
+// synthesis translate_on
+// synopsys translate_on
+;
+   assign  _vram_x_data = 
+// synthesis translate_off
+// synopsys translate_off
+(_net_6)? 
+// synthesis translate_on
+// synopsys translate_on
+((_net_6)?_camera_out_VGA_B:4'b0)
+// synthesis translate_off
+// synopsys translate_off
+:4'bx
+// synthesis translate_on
+// synopsys translate_on
+;
+   assign  _vram_x_p_reset = p_reset;
+   assign  _vram_x_m_clock = m_clock;
+   assign  _vram_x_2_wren = 
+// synthesis translate_off
+// synopsys translate_off
+(_net_6)? 
+// synthesis translate_on
+// synopsys translate_on
+_net_6
+// synthesis translate_off
+// synopsys translate_off
+:1'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
@@ -243,35 +253,7 @@ _net_6
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _vram_x_2_wren = 
-// synthesis translate_off
-// synopsys translate_off
-(_net_6)? 
-// synthesis translate_on
-// synopsys translate_on
-_net_6
-// synthesis translate_off
-// synopsys translate_off
-:1'bx
-// synthesis translate_on
-// synopsys translate_on
-;
-   assign  _vram_x_2_p_reset = p_reset;
-   assign  _vram_x_2_m_clock = m_clock;
-   assign  _vram_x_1_data = 
-// synthesis translate_off
-// synopsys translate_off
-(_net_6)? 
-// synthesis translate_on
-// synopsys translate_on
-((_net_6)?_camera_out_VGA_G:4'b0)
-// synthesis translate_off
-// synopsys translate_off
-:4'bx
-// synthesis translate_on
-// synopsys translate_on
-;
-   assign  _vram_x_1_rdaddress = 
+   assign  _vram_x_2_rdaddress = 
 // synthesis translate_off
 // synopsys translate_off
 (_net_11)? 
@@ -281,6 +263,34 @@ _net_6
 // synthesis translate_off
 // synopsys translate_off
 :14'bx
+// synthesis translate_on
+// synopsys translate_on
+;
+   assign  _vram_x_2_data = 
+// synthesis translate_off
+// synopsys translate_off
+(_net_6)? 
+// synthesis translate_on
+// synopsys translate_on
+((_net_6)?_camera_out_VGA_R:4'b0)
+// synthesis translate_off
+// synopsys translate_off
+:4'bx
+// synthesis translate_on
+// synopsys translate_on
+;
+   assign  _vram_x_2_p_reset = p_reset;
+   assign  _vram_x_2_m_clock = m_clock;
+   assign  _vram_x_1_wren = 
+// synthesis translate_off
+// synopsys translate_off
+(_net_6)? 
+// synthesis translate_on
+// synopsys translate_on
+_net_6
+// synthesis translate_off
+// synopsys translate_off
+:1'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
@@ -297,16 +307,29 @@ _net_6
 // synthesis translate_on
 // synopsys translate_on
 ;
-   assign  _vram_x_1_wren = 
+   assign  _vram_x_1_rdaddress = 
+// synthesis translate_off
+// synopsys translate_off
+(_net_11)? 
+// synthesis translate_on
+// synopsys translate_on
+((_net_11)?(plot_nums[13:0]):14'b0)
+// synthesis translate_off
+// synopsys translate_off
+:14'bx
+// synthesis translate_on
+// synopsys translate_on
+;
+   assign  _vram_x_1_data = 
 // synthesis translate_off
 // synopsys translate_off
 (_net_6)? 
 // synthesis translate_on
 // synopsys translate_on
-_net_6
+((_net_6)?_camera_out_VGA_G:4'b0)
 // synthesis translate_off
 // synopsys translate_off
-:1'bx
+:4'bx
 // synthesis translate_on
 // synopsys translate_on
 ;
@@ -329,10 +352,9 @@ _net_6
    assign  _net_14 = _net_13;
    assign  _net_15 = (_net_12+_net_14);
    assign  xclk = _camera_out_xclk;
-   assign  sda = _camera_out_sda;
-   assign  scl = _camera_out_scl;
+   assign  sda = (_camera_out_sda)?1'bz:1'b0;
+   assign  scl = (_camera_out_scl)?1'bz:1'b0;
    assign  reset = _camera_out_reset;
-   assign  pwdn = _camera_out_pwdn;
 
 // synthesis translate_off
 // synopsys translate_off
@@ -340,8 +362,8 @@ always @(posedge m_clock or negedge p_reset)
   begin
 if (((~_net_11)&_net_11))
  begin $display("Warning: assign collision(cam_test:VGA_R) at %d",$time);
-if ((~_net_11)) $display("assert ((~_net_11)) line 56 at %d\n",$time);
-if (_net_11) $display("assert (_net_11) line 54 at %d\n",$time);
+if ((~_net_11)) $display("assert ((~_net_11)) line 58 at %d\n",$time);
+if (_net_11) $display("assert (_net_11) line 56 at %d\n",$time);
  end
  end
 
@@ -368,8 +390,8 @@ always @(posedge m_clock or negedge p_reset)
   begin
 if (((~_net_11)&_net_11))
  begin $display("Warning: assign collision(cam_test:VGA_B) at %d",$time);
-if ((~_net_11)) $display("assert ((~_net_11)) line 58 at %d\n",$time);
-if (_net_11) $display("assert (_net_11) line 52 at %d\n",$time);
+if ((~_net_11)) $display("assert ((~_net_11)) line 60 at %d\n",$time);
+if (_net_11) $display("assert (_net_11) line 54 at %d\n",$time);
  end
  end
 
@@ -396,8 +418,8 @@ always @(posedge m_clock or negedge p_reset)
   begin
 if (((~_net_11)&_net_11))
  begin $display("Warning: assign collision(cam_test:VGA_G) at %d",$time);
-if ((~_net_11)) $display("assert ((~_net_11)) line 57 at %d\n",$time);
-if (_net_11) $display("assert (_net_11) line 53 at %d\n",$time);
+if ((~_net_11)) $display("assert ((~_net_11)) line 59 at %d\n",$time);
+if (_net_11) $display("assert (_net_11) line 55 at %d\n",$time);
  end
  end
 
@@ -444,8 +466,7 @@ if (~p_reset)
      plot_num_y <= 32'b00000000000000000000000000000000;
 else   plot_num_y <= (_net_2[56:25]);
 end
-
 endmodule
 
-/*Produced by NSL Core(version=20240424), IP ARCH, Inc. Mon Aug 12 00:06:14 2024
+/*Produced by NSL Core(version=20240708), IP ARCH, Inc. Fri Dec 20 15:23:16 2024
  Licensed to :EVALUATION USER*/
