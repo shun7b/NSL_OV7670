@@ -9,4 +9,4 @@ top module cam_test.v
 <br>１２８＊１２８の配列に画像データを書き込みVGAで表示した。
 <br>GPIOでカメラとFPGAを通信した。
 <br>GPIOのピンはcam_test.qsfを参照
-<br>VGA.v,cam_test.v,camera.v,R.v,G.v,B.vのみで論理合成するとできた。(camera_ap.sofでカメラ設定できた。(sccb通信ができカメラ設定できる))SCL,SDAは1'bzを用いる。(highの時)
+<br>VGA.v,cam_test.v,camera.v,R.v,G.v,B.vのみで論理合成するとできた。(sccb通信ができカメラ設定できる))SCL,SDAは1'bzを用いる。(highの時)
